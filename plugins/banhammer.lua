@@ -94,7 +94,7 @@ local function kick_ban_res(extra, success, result)
 		receiver = 'channel#id'..chat_id
 	  end
 	  if success == 0 then
-		return send_large_msg(receiver, "Cannot find user by that username!")
+		return send_large_msg(receiver, "Sorry,Cannot find user by that username!")
 	  end
       local member_id = result.peer_id
       local user_id = member_id
@@ -107,13 +107,13 @@ local function kick_ban_res(extra, success, result)
 			return
          end
          if is_momod2(member_id, chat_id) and not is_admin2(sender) then
-            send_large_msg(receiver, "You can't kick mods/owner/admins")
+            send_large_msg(receiver, "Sorry,You can't kick mods/owner/admins")
 			return
          end
 		 kick_user(member_id, chat_id)
       elseif get_cmd == 'ban' then
         if is_momod2(member_id, chat_id) and not is_admin2(sender) then
-			send_large_msg(receiver, "You can't ban mods/owner/admins")
+			send_large_msg(receiver, "Sorry,You can't ban mods/owner/admins")
 			return
         end
         send_large_msg(receiver, 'کاربر @'..member..' ['..member_id..'] محروم شد')
@@ -184,7 +184,7 @@ local support_id = msg.from.id
          	return
         end
         if not is_admin1(msg) and is_momod2(matches[2], msg.to.id) then
-          	return "you can't ban mods/owner/admins"
+          	return "Sorry,you can't ban mods/owner/admins"
         end
         if tonumber(matches[2]) == tonumber(msg.from.id) then
           	return "You can't ban your self !"
@@ -247,7 +247,7 @@ if matches[1]:lower() == 'kick' then
 			return
 		end
 		if not is_admin1(msg) and is_momod2(matches[2], msg.to.id) then
-			return "you can't kick mods/owner/admins"
+			return "Sorry,you can't kick mods/owner/admins"
 		end
 		if tonumber(matches[2]) == tonumber(msg.from.id) then
 			return "You can't kick your self !"
